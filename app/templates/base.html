@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+
+{% block title %}
+    <title>奥创娱乐</title>
+{% endblock %}
+
+{% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='3rd/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="shortcut icon"
+          href="{{ url_for('static', filename='images/icon.png') }}">
+{% endblock %}
+
+<body>
+{% block navbar %}
+
+{% endblock %}
+<div class='container main-area'>
+    <div class="row main-message">
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                {% if message %}
+                    <div class="alert alert-warning" role="alert">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+        {% endwith %}
+        {% if form and form.errors %}
+            {% for key, error in form.errors.items() %}
+                <div class="alert alert-warning" role="alert">{{ error }}</div>
+
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% block content %} {% endblock %}
+</div>
+<div id="footer" class="flex-col-rcenter">
+    <span>© 2018-2020 yule.ultra.im created by ultra</span>
+</div>
+</body>
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='3rd/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='3rd/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    <script>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+{% endblock %}
+
+</html>

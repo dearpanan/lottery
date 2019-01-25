@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+<!--顶部css导入部分-->
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+{% endblock %}
+
+{% block navbar %}
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>奥 创 娱 乐 城</h1>
+  <p>Resize this responsive page to see the effect!</p>
+</div>
+
+<!--导航栏-->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">
+     <img src="{{url_for('static', filename='images/lottery_logo.png')}}" alt="Logo" style="width:40px;">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop-ssc" data-toggle="dropdown">
+            时时彩
+          </a>
+          <div class="dropdown-menu">
+              <a class="dropdown-item" href="{{url_for('web.lottery_ssc_chongqing')}}">重庆时时彩</a>
+          </div>
+      </li>
+
+      <!-- Dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop-quickin" data-toggle="dropdown">
+          快速入口
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">个人中心</a>
+          <a class="dropdown-item" href="#">邮箱</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+     <!--左侧快速入口栏-->
+<div class='container'>
+    <div class="row">
+
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+    {{ super() }}
+{% endblock %}
